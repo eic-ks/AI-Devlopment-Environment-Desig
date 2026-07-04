@@ -1,6 +1,6 @@
 # Request 001: Skills設計
 
-- ステータス: 未着手
+- ステータス: 完了（2026-07-04）
 - 対応するCLAUDE.md節: 1. Skills設計
 - 依存: Phase 0（完了）
 - 成果物置き場: `outputs/skills/`

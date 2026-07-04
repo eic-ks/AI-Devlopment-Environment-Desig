@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-**Phase 0（土台整備）完了 → Phase 1（Skills設計）待ち**
+**Phase 1（Skills設計）完了（2026-07-04） → Phase 2（Workflow設計）待ち**
 
 ## 確定済みの決定事項
 
@@ -15,15 +15,18 @@
 | パイロット対象 | 未特定、抽象的な環境設計として進める | `docs/decisions/0005-no-pilot-project.md` |
 | フェーズ分割 | CLAUDE.mdの6節＋成果物10点を7フェーズに分解 | `docs/roadmap.md` |
 | 評価基準 | 10軸（汎用性〜導入コスト）＋責務分離フレーム | `docs/principles.md` |
+| Skillの粒度・階層 | 「1成果物1Skill」＋分割基準「手順が違えば分割、基準が違うだけならパラメータ化」。階層は2層の分類のみ（実行階層は禁止） | `docs/decisions/0001-skill-granularity.md` |
+| Skill体系 | 6カテゴリ19Skill（理解/計画/変換/評価/記録/セッション管理）＋設計原則6つ | `outputs/skills/01-skill-catalog.md`、`02-design-principles.md` |
+| 実行可能Skillの構築 | ADR-0003を部分改定し、全19SkillをClaude Code形式で実装（`skills/`、`~/.claude/skills/`へsymlink済み） | `docs/decisions/0006-build-executable-skills.md`、`skills/README.md` |
 
 ## 未解決・要確認事項
 
-- なし（Phase 0時点）。Phase 1開始時に `requests/001-skills.md` の「このフェーズ開始時に確認すべきこと」を参照。
+- 「前提入力の欠落時に進めずに要求する」停止規約の設計はPhase 2（Workflow）またはPhase 3（Context）に持ち越し（`docs/handoff.md` の保留事項参照）
 
 ## 次にやること
 
-1. `requests/001-skills.md` を読む
-2. Skills設計（階層構造・粒度・命名）を議論し、`outputs/skills/` に成果物を保存する
+1. `requests/002-workflows.md` を読む
+2. `outputs/skills/01-skill-catalog.md`（19Skill一覧）を入力に、Workflow設計（シナリオ別の組み合わせ・承認ポイント）を議論し、`outputs/workflows/` に成果物を保存する
 3. 完了したらこのファイルと `docs/handoff.md` を更新する
 
 ## 更新ルール
