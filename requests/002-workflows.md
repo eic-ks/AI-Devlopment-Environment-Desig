@@ -1,6 +1,6 @@
 # Request 002: Workflow設計
 
-- ステータス: 未着手
+- ステータス: 完了（2026-07-04。成果物: `outputs/workflows/`、ADR: `docs/decisions/0007-workflow-model.md`）
 - 対応するCLAUDE.md節: 2. Workflow設計
 - 依存: Phase 1（Skills設計）
 - 成果物置き場: `outputs/workflows/`

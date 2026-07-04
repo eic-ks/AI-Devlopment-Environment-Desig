@@ -30,8 +30,8 @@
 | # | フェーズ | 依頼 | 成果物置き場 | ステータス |
 |---|---|---|---|---|
 | 0 | 土台整備 | — | このリポジトリ構成一式 | ✅ 完了 |
-| 1 | Skills設計 | `requests/001-skills.md` | `outputs/skills/` | 未着手 |
-| 2 | Workflow設計 | `requests/002-workflows.md` | `outputs/workflows/` | 未着手 |
+| 1 | Skills設計 | `requests/001-skills.md` | `outputs/skills/` | ✅ 完了 |
+| 2 | Workflow設計 | `requests/002-workflows.md` | `outputs/workflows/` | ✅ 完了 |
 | 3 | Context/RAG設計 | `requests/003-rag.md` | `outputs/context-rag/` | 未着手 |
 | 4 | Knowledge Management設計 | `requests/004-knowledge-management.md` | `outputs/knowledge-management/` | 未着手 |
 | 5 | AIへの指示方法 | `requests/005-instruction-methods.md` | `outputs/instruction-methods/` | 未着手 |

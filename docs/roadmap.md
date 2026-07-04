@@ -8,7 +8,7 @@ CLAUDE.md の6セクション＋成果物10点を、7つの実行フェーズに
 |---|---|---|---|---|---|---|
 | 0 | 土台整備 | — | — | このリポジトリ構成、`docs/vision.md`、`docs/principles.md` | なし | ✅ 完了（2026-07-02） |
 | 1 | Skills設計 | 1. Skills設計 | `requests/001-skills.md` | `outputs/skills/` | Phase 0 | ✅ 完了（2026-07-04） |
-| 2 | Workflow設計 | 2. Workflow設計 | `requests/002-workflows.md` | `outputs/workflows/` | Phase 1 | 未着手 |
+| 2 | Workflow設計 | 2. Workflow設計 | `requests/002-workflows.md` | `outputs/workflows/` | Phase 1 | ✅ 完了（2026-07-04） |
 | 3 | Context/RAG設計 | 3. Context/RAG設計 | `requests/003-rag.md` | `outputs/context-rag/` | Phase 0（Phase 1と相互参照あり） | 未着手 |
 | 4 | Knowledge Management設計 | 4. Knowledge Management | `requests/004-knowledge-management.md` | `outputs/knowledge-management/` | Phase 3 | 未着手 |
 | 5 | AIへの指示方法 | 5. AIへの指示方法 | `requests/005-instruction-methods.md` | `outputs/instruction-methods/` | Phase 1, 2 | 未着手 |
@@ -36,6 +36,7 @@ CLAUDE.md の6セクション＋成果物10点を、7つの実行フェーズに
 
 ## 変更履歴
 
+- 2026-07-04: Phase 2完了。Workflowカタログ（メタ骨格・3ゲート・W1〜W4＋組み立て規則）と設計原則W1〜W6、ADR-0007を確定。Phase 1保留の「入力欠落時の停止規約」を原則W3として解消。
 - 2026-07-04: Phase 1追補。ADR-0006でADR-0003を部分改定し、全19SkillをClaude Code形式で実装（`skills/`）。
 - 2026-07-04: Phase 1完了。6カテゴリ19SkillのカタログとADR-0001（粒度・階層）を確定。
 - 2026-07-02: Phase 0完了。リポジトリ構成一式を整備。フェーズ5〜7を新設（元の`requests/`は1〜4のみだった）。
