@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-**Phase 4（Knowledge Management設計）完了（2026-07-05） → Phase 5（AIへの指示方法）待ち**
+**Phase 5（AIへの指示方法）完了（2026-07-05） → Phase 6（統合アーキテクチャ提案）待ち**
 
 ## 確定済みの決定事項
 
@@ -23,17 +23,20 @@
 | Context/RAGアーキテクチャ | 読み込みタイミングで5層配置（L1常駐/L2状態/L3注入/L4参照/L5定義）。固有知識の恒久的な置き場＝L3。L1は3テスト＋分量予算150行、L3/L4は「従うもの/引くもの」で判定。Vector DB不採用（ファイルベースKB＋エージェント検索、再検討条件付き）。圧縮は構造化のみ・要約禁止。W3強制＝L1常駐規約＋`context/INDEX.md`＋存在判定（Phase 2保留事項の解消） | `docs/decisions/0002-context-architecture.md`、`outputs/context-rag/00〜03` |
 | KB内部構造（L4） | 分類は「知識の種類」5分類（知見・決定・外部情報・検索失敗・棚卸し）で固定・書き込みイベントと1対1・変更はADR必須。1エントリ1ファイル＋定型ヘッダ、命名 `{日付}-{短い説明}.md` でファイル名＝インデックス（インデックスファイル不保持）。重複排除・整合性は書き込み時glob+grep＋参照時矛盾検出の分散実行（全量チェックなし）。バージョン管理はGitのみ・失効マーキングか削除。Phase 3との矛盾ゼロを検証済み | `docs/decisions/0008-kb-structure.md`、`outputs/knowledge-management/00〜03` |
 | Phase 2〜4の実行可能形式 | ADR-0003の部分改定②。W1〜W4＋組み立て規則を `workflows/` の5スキルに、Phase 3/4のContext/KB物理構造を `scaffold/context-scaffold`（雛形3種同梱・冪等）に実装。判断基準・原則系文書は設計のまま完了。設計が正・一方向ルールはADR-0006と同一。`~/.claude/skills/` へsymlink済み | `docs/decisions/0009-build-executable-workflows-and-scaffold.md`、`workflows/README.md`、`scaffold/README.md` |
+| 指示インターフェース | 指示は3要素定型（①呼び出し ②入力の所在 ③成果物の置き場）・常設規約はINDEX注入で指示に書かない。分割は人がシナリオ判定＋渡す単位（上限1ゲート区間・下限1Skill）まで、ステップ分割はB系委譲。区切りはゲート駆動（一般化＝前提が固定される点で切る）。渡し方はファイル参照既定・貼り付けは原文性×未ファイルのみ・要約は伝達でも禁止。レビュー依頼はD1と1対1の4項目テンプレート＋観点を育てるループ。引継ぎ発動条件＝ゲート区間2つ以上。成果物は設計ドキュメントのまま（判断基準・原則系のため変換なし） | `docs/decisions/0010-instruction-interface.md`、`outputs/instruction-methods/00〜04` |
 
 ## 未解決・要確認事項
 
-- 適用作業3点は未実施：①このリポジトリのCLAUDE.md軽量化（`outputs/context-rag/02-placement-criteria.md` 5章で判定済み）②`context/kb-format.md` の実体化（内容＝`outputs/knowledge-management/01-kb-structure.md`）③`research/` の移行（同01の6章）。設計フェーズ完了後の適用作業として実施タイミングをユーザーに確認する
+- 適用作業は残り2点：①このリポジトリのCLAUDE.md軽量化（`outputs/context-rag/02-placement-criteria.md` 5章で判定済み）③`research/` の移行（`outputs/knowledge-management/01-kb-structure.md` 6章）。ユーザー裁定（2026-07-05）：軽い②のみ先行実施し、①③は設計フェーズ完了後に実施する
+- ~~②`context/kb-format.md` の実体化~~ → 2026-07-05 実施済み。scaffold同梱雛形（`scaffold/context-scaffold/templates/kb-format.md`）を `context/kb-format.md` に配置し、このリポジトリ固有の注記（ADR置き場＝`docs/decisions/`）を追加
 - 命名の質の劣化検出・死蔵エントリの誤情報・昇格の回数集計・降格の参照検出・棚卸し周期の計測 → Phase 7（運用設計）
+- シナリオ判定の裁量（境界例）・3要素/ゲート単位の規律の形骸化検出・観点ファイルの肥大化整理基準 → Phase 7（運用設計）
 - ~~Workflow・Context・KB体系の実行可能形式での実装は未決定~~ → 2026-07-05 に ADR-0009 で決定・実装済み（`workflows/`・`scaffold/`）
 
 ## 次にやること
 
-1. `requests/005-instruction-methods.md` を読む
-2. `outputs/skills/01-skill-catalog.md` と `outputs/workflows/01-workflow-catalog.md`・`02-orchestration-principles.md` を入力に、AIへの指示方法（タスク分割粒度・コンテキストの渡し方・レビュー依頼・Skills/Workflowを呼び出す指示の書き方）を設計し、`outputs/instruction-methods/` に成果物を保存する
+1. `requests/006-integrated-architecture.md` を読む
+2. Phase 1〜5の主成果物（`outputs/skills/01`・`workflows/01`・`context-rag/01`・`knowledge-management/01`・`instruction-methods/01`）を入力に、統合アーキテクチャ提案を設計し、`outputs/architecture/` に成果物を保存する
 3. 完了したらこのファイルと `docs/handoff.md` を更新する
 
 ## 更新ルール
