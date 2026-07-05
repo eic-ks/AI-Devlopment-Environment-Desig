@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-**Phase 2（Workflow設計）完了（2026-07-04） → Phase 3（Context/RAG設計）待ち**
+**Phase 3（Context/RAG設計）完了（2026-07-05） → Phase 4（Knowledge Management設計）待ち**
 
 ## 確定済みの決定事項
 
@@ -20,17 +20,19 @@
 | 実行可能Skillの構築 | ADR-0003を部分改定し、全19SkillをClaude Code形式で実装（`skills/`、`~/.claude/skills/`へsymlink済み） | `docs/decisions/0006-build-executable-skills.md`、`skills/README.md` |
 | Workflowモデル | 直列メタ骨格＋限定ゲート分岐（3ゲート・遷移3種固定）。承認はG1計画承認/G2評価裁定/G3完了確認のみ。テンプレート4本（W1〜W4）＋組み立て規則のハイブリッド | `docs/decisions/0007-workflow-model.md`、`outputs/workflows/01-workflow-catalog.md`、`02-orchestration-principles.md` |
 | 入力欠落時の停止規約 | Workflowの各ステップ開始条件＝Skill前提入力【必須】の充足確認。欠落時は停止して要求、推測補完禁止（Phase 1保留事項の解消） | `outputs/workflows/02-orchestration-principles.md` 原則W3 |
+| Context/RAGアーキテクチャ | 読み込みタイミングで5層配置（L1常駐/L2状態/L3注入/L4参照/L5定義）。固有知識の恒久的な置き場＝L3。L1は3テスト＋分量予算150行、L3/L4は「従うもの/引くもの」で判定。Vector DB不採用（ファイルベースKB＋エージェント検索、再検討条件付き）。圧縮は構造化のみ・要約禁止。W3強制＝L1常駐規約＋`context/INDEX.md`＋存在判定（Phase 2保留事項の解消） | `docs/decisions/0002-context-architecture.md`、`outputs/context-rag/00〜03` |
 
 ## 未解決・要確認事項
 
-- 停止規約（原則W3）の実行時強制の仕掛けと、固有知識（観点リスト・規約・テンプレート等）の恒久的な置き場所 → **Phase 3の中心要件**
-- ゲート形骸化の検出・「3回ルール」の計測・テンプレート見直し周期 → Phase 7（運用設計）
-- Workflowの実行可能形式（コマンド化等）での実装は未決定。現時点は設計ドキュメントのみ
+- このリポジトリのCLAUDE.mdへの適用（`outputs/context-rag/02-placement-criteria.md` 5章で判定済み・追い出し3点＋roadmap二重記載の解消）は未実施。実施タイミングをユーザーに確認する
+- KB（L4）内部の分類体系・記録フォーマット・検索性の詳細設計 → **Phase 4の中心**
+- 昇格の回数集計・降格の参照検出・棚卸し周期の計測の仕組み → Phase 7（運用設計）
+- Workflow・Context体系の実行可能形式（コマンド化・AGENT.md雛形等）での実装は未決定。現時点は設計ドキュメントのみ
 
 ## 次にやること
 
-1. `requests/003-rag.md` を読む
-2. `outputs/skills/02-design-principles.md`（責務境界）と `outputs/workflows/02-orchestration-principles.md`（原則W3・W6）を入力に、Context/RAG設計を議論し、`outputs/context-rag/` に成果物を保存する
+1. `requests/004-knowledge-management.md` を読む
+2. `outputs/context-rag/01-context-architecture.md`（L4の定義・書き込み経路）と `03-maintenance-cycle.md`（書き込み規律・検索方式）を入力に、Knowledge Management設計を議論し、`outputs/knowledge-management/` に成果物を保存する
 3. 完了したらこのファイルと `docs/handoff.md` を更新する
 
 ## 更新ルール
