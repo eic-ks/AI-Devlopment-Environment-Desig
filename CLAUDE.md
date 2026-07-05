@@ -107,7 +107,7 @@
 
 | 項目 | 決定 | ADR |
 |---|---|---|
-| 成果物形式 | 設計ドキュメント基本。Phase 1のSkillsのみClaude Code形式で実装済み（`skills/`） | `docs/decisions/0003-deliverable-format.md`、`0006-build-executable-skills.md` |
+| 成果物形式 | 設計ドキュメント基本。使う道具はClaude Code形式で実装済み：Phase 1 Skills（`skills/`）・Phase 2 Workflows（`workflows/`）・Phase 3/4 scaffold（`scaffold/`）。判断基準・原則系は設計のまま | `docs/decisions/0003-deliverable-format.md`、`0006-build-executable-skills.md`、`0009-build-executable-workflows-and-scaffold.md` |
 | 利用シーン | 個人（ソロ開発者） | `docs/decisions/0004-target-user.md` |
 | パイロット | 未特定・抽象設計 | `docs/decisions/0005-no-pilot-project.md` |
 

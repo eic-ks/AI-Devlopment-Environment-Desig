@@ -1,6 +1,6 @@
 # Request 004: Knowledge Management設計
 
-- ステータス: 未着手
+- ステータス: 完了（2026-07-05。成果物: `outputs/knowledge-management/`、ADR: `docs/decisions/0008-kb-structure.md`）
 - 対応するCLAUDE.md節: 4. Knowledge Management
 - 依存: Phase 3（Context/RAG設計）
 - 成果物置き場: `outputs/knowledge-management/`
