@@ -32,6 +32,7 @@
 - Phase 7への引継ぎ（Phase 6整合性照合の緊張点）：T1 自動メモリの「補助」規定の遵守検出／T3 Subagentの途中経過保存の定型経路／T6 Subagent起動時のL1規約到達の実運用確認（`outputs/architecture/03-consistency-check.md` 5章）
 - 命名の質の劣化検出・死蔵エントリの誤情報・昇格の回数集計・降格の参照検出・棚卸し周期の計測 → Phase 7（運用設計）
 - シナリオ判定の裁量（境界例）・3要素/ゲート単位の規律の形骸化検出・観点ファイルの肥大化整理基準 → Phase 7（運用設計）
+- Skill description の常駐コスト問題（25本のname＋descriptionが全セッションに常駐≒3〜4千トークン。L5メタデータが実質L1化しており分量規律がない。詳細と対処素案: `research/notes/2026-07-06-skill-description-residency.md`） → Phase 7（長期運用）
 
 ## 次にやること
 

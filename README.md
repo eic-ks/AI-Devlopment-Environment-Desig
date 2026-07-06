@@ -12,12 +12,13 @@
 | `docs/decisions/` | ADR（決定記録）。一度決めたことを覆さないための記録 | 重要な決定をした時 |
 | `requests/` | 各フェーズの依頼内容（インプット）。フェーズ開始時に読む | フェーズ開始前に確定、以後基本不変 |
 | `outputs/` | 各フェーズの成果物（アウトプット）。設計ドキュメント | フェーズ完了時 |
+| `skills/`・`workflows/`・`scaffold/` | 実装済みの道具（Claude Code形式）。設計（`outputs/`）が正・変更は設計→実装の一方向 | 設計改定時 |
 | `research/` | 成果物を作る過程で集めた外部情報・メモ（一次情報） | 随時 |
 | `archive/` | 差し替えられた旧バージョンの保管場所（削除しない） | 更新時 |
 
 ## 前提条件（Phase 0 で確定・全フェーズ共通）
 
-- 成果物の形式：**設計ドキュメントのみ**（Claude Code の実行可能な SKILL.md 雛形などは作らない）
+- 成果物の形式：**設計ドキュメント基本**。使う道具（Skills/Workflows/scaffold）は Claude Code 形式で実装済み、判断基準・原則系は設計のまま（ADR-0003 を ADR-0006・0009 で部分改定）
 - 想定利用シーン：**個人（ソロ開発者としての自分専用）**
 - 検証パイロット：**未特定**。特定プロジェクトに寄せず、抽象的な環境設計として進める
 
@@ -25,18 +26,7 @@
 
 ## フェーズ一覧
 
-詳細は `docs/roadmap.md` を参照。
-
-| # | フェーズ | 依頼 | 成果物置き場 | ステータス |
-|---|---|---|---|---|
-| 0 | 土台整備 | — | このリポジトリ構成一式 | ✅ 完了 |
-| 1 | Skills設計 | `requests/001-skills.md` | `outputs/skills/` | ✅ 完了 |
-| 2 | Workflow設計 | `requests/002-workflows.md` | `outputs/workflows/` | ✅ 完了 |
-| 3 | Context/RAG設計 | `requests/003-rag.md` | `outputs/context-rag/` | 未着手 |
-| 4 | Knowledge Management設計 | `requests/004-knowledge-management.md` | `outputs/knowledge-management/` | 未着手 |
-| 5 | AIへの指示方法 | `requests/005-instruction-methods.md` | `outputs/instruction-methods/` | 未着手 |
-| 6 | 統合アーキテクチャ提案 | `requests/006-integrated-architecture.md` | `outputs/architecture/` | 未着手 |
-| 7 | 統合・ロードマップ・ベストプラクティス | `requests/007-synthesis.md` | `outputs/synthesis/` | 未着手 |
+フェーズ一覧・依存関係・ステータスは **`docs/roadmap.md` が唯一の正**（ここには複製を置かない）。現在地は `docs/current-state.md` を参照。
 
 ## 1フェーズの進め方（推奨）
 

@@ -2,7 +2,9 @@
 
 ## ステータス
 
-承認済み（Phase 0）
+承認済み（Phase 0）→ **部分改定あり**（ADR-0006・ADR-0009 を参照）
+
+> 改定後の現行方針: Phase 1 Skills（`skills/`）・Phase 2 Workflows（`workflows/`）・Phase 3/4 scaffold（`scaffold/`）は Claude Code 形式で実装済み。判断基準・原則系の文書は本ADRのとおり設計ドキュメントのまま。以下の本文は Phase 0 時点の決定の記録である。
 
 ## コンテキスト
 
