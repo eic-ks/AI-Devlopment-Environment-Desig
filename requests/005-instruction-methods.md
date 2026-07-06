@@ -1,6 +1,6 @@
 # Request 005: AIへの指示方法
 
-- ステータス: 未着手
+- ステータス: 完了（2026-07-05）
 - 対応するCLAUDE.md節: 5. AIへの指示方法
 - 依存: Phase 1（Skills）, Phase 2（Workflow）
 - 成果物置き場: `outputs/instruction-methods/`

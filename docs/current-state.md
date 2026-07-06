@@ -4,7 +4,7 @@
 
 ## 今のフェーズ
 
-**Phase 5（AIへの指示方法）完了（2026-07-05） → Phase 6（統合アーキテクチャ提案）待ち**
+**Phase 6（統合アーキテクチャ提案）完了（2026-07-06、G3承認済み） → Phase 7（統合・ロードマップ・ベストプラクティス）待ち**
 
 ## 確定済みの決定事項
 
@@ -24,19 +24,19 @@
 | KB内部構造（L4） | 分類は「知識の種類」5分類（知見・決定・外部情報・検索失敗・棚卸し）で固定・書き込みイベントと1対1・変更はADR必須。1エントリ1ファイル＋定型ヘッダ、命名 `{日付}-{短い説明}.md` でファイル名＝インデックス（インデックスファイル不保持）。重複排除・整合性は書き込み時glob+grep＋参照時矛盾検出の分散実行（全量チェックなし）。バージョン管理はGitのみ・失効マーキングか削除。Phase 3との矛盾ゼロを検証済み | `docs/decisions/0008-kb-structure.md`、`outputs/knowledge-management/00〜03` |
 | Phase 2〜4の実行可能形式 | ADR-0003の部分改定②。W1〜W4＋組み立て規則を `workflows/` の5スキルに、Phase 3/4のContext/KB物理構造を `scaffold/context-scaffold`（雛形3種同梱・冪等）に実装。判断基準・原則系文書は設計のまま完了。設計が正・一方向ルールはADR-0006と同一。`~/.claude/skills/` へsymlink済み | `docs/decisions/0009-build-executable-workflows-and-scaffold.md`、`workflows/README.md`、`scaffold/README.md` |
 | 指示インターフェース | 指示は3要素定型（①呼び出し ②入力の所在 ③成果物の置き場）・常設規約はINDEX注入で指示に書かない。分割は人がシナリオ判定＋渡す単位（上限1ゲート区間・下限1Skill）まで、ステップ分割はB系委譲。区切りはゲート駆動（一般化＝前提が固定される点で切る）。渡し方はファイル参照既定・貼り付けは原文性×未ファイルのみ・要約は伝達でも禁止。レビュー依頼はD1と1対1の4項目テンプレート＋観点を育てるループ。引継ぎ発動条件＝ゲート区間2つ以上。成果物は設計ドキュメントのまま（判断基準・原則系のため変換なし） | `docs/decisions/0010-instruction-interface.md`、`outputs/instruction-methods/00〜04` |
+| 統合アーキテクチャ・技術要素採否 | 統合図＝「5層×実行主体」の配線図・新要素ゼロ。採用＝Subagent（ゲート区間内の作業実行者・委譲禁止3点＝ゲート裁定/L1・L3・L5書き込み/F1・F2によるL2更新。単発委譲まで）・Memory（L2＋L4で実現済み・自動メモリは補助）・RAG（概念のみ・実装はglob/grep）。不採用（全件再検討条件付き）＝ベクトルDB・Knowledge Graph（KB設計の代替にならず・軽量案が先）・Workflow Engine・MCP（禁じないが依存しない）。整合性照合20件で矛盾0・緊張6（受け先確定済み） | `docs/decisions/0011-technology-selection.md`、`outputs/architecture/00〜03` |
 
 ## 未解決・要確認事項
 
-- 適用作業は残り2点：①このリポジトリのCLAUDE.md軽量化（`outputs/context-rag/02-placement-criteria.md` 5章で判定済み）③`research/` の移行（`outputs/knowledge-management/01-kb-structure.md` 6章）。ユーザー裁定（2026-07-05）：軽い②のみ先行実施し、①③は設計フェーズ完了後に実施する
-- ~~②`context/kb-format.md` の実体化~~ → 2026-07-05 実施済み。scaffold同梱雛形（`scaffold/context-scaffold/templates/kb-format.md`）を `context/kb-format.md` に配置し、このリポジトリ固有の注記（ADR置き場＝`docs/decisions/`）を追加
+- 適用作業は残り3点：①このリポジトリのCLAUDE.md軽量化（`outputs/context-rag/02-placement-criteria.md` 5章で判定済み）③`research/` の移行（`outputs/knowledge-management/01-kb-structure.md` 6章）④棚卸しテンプレート等への「関係起因の検索失敗か」観点の追記（`outputs/architecture/03-consistency-check.md` 緊張T4）。ユーザー裁定（2026-07-05）：①③は設計フェーズ完了後に実施する
+- Phase 7への引継ぎ（Phase 6整合性照合の緊張点）：T1 自動メモリの「補助」規定の遵守検出／T3 Subagentの途中経過保存の定型経路／T6 Subagent起動時のL1規約到達の実運用確認（`outputs/architecture/03-consistency-check.md` 5章）
 - 命名の質の劣化検出・死蔵エントリの誤情報・昇格の回数集計・降格の参照検出・棚卸し周期の計測 → Phase 7（運用設計）
 - シナリオ判定の裁量（境界例）・3要素/ゲート単位の規律の形骸化検出・観点ファイルの肥大化整理基準 → Phase 7（運用設計）
-- ~~Workflow・Context・KB体系の実行可能形式での実装は未決定~~ → 2026-07-05 に ADR-0009 で決定・実装済み（`workflows/`・`scaffold/`）
 
 ## 次にやること
 
-1. `requests/006-integrated-architecture.md` を読む
-2. Phase 1〜5の主成果物（`outputs/skills/01`・`workflows/01`・`context-rag/01`・`knowledge-management/01`・`instruction-methods/01`）を入力に、統合アーキテクチャ提案を設計し、`outputs/architecture/` に成果物を保存する
+1. `requests/007-synthesis.md` を読み、Phase 7（統合・ロードマップ・ベストプラクティス）を開始する
+2. Phase 7 の設計計画に、`outputs/architecture/03-consistency-check.md` 5章の引継ぎ3件（T1・T3・T6）と上記の運用設計持ち越し事項を検討対象として組み込む
 3. 完了したらこのファイルと `docs/handoff.md` を更新する
 
 ## 更新ルール
